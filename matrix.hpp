@@ -22,13 +22,38 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
+    Matrix operator-(const Matrix<R, C> &rhs)
+    {
+        static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
+
+        Matrix<ROWS, COLS> result = *this;
+
+        result -= rhs;
+
+        return result;
+    }
+
+    template <uint8_t R, uint8_t C>
+    Matrix &operator-=(const Matrix<R, C> &rhs)
+    {
+        static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
+
+        for (uint16_t i = 0; i < ROWS * COLS; i++)
+        {
+            _data[i] -= rhs[i];
+        }
+
+        return *this;
+    }
+
+    template <uint8_t R, uint8_t C>
     Matrix operator+(const Matrix<R, C> &rhs)
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
 
-        Matrix<ROWS, COLS> result = rhs;
+        Matrix<ROWS, COLS> result = this;
 
-        result += *this;
+        result += rhs;
 
         return result;
     }
