@@ -73,10 +73,7 @@ public:
 
     float operator[](uint16_t i) const
     {
-        if (i > ROWS * COLS)
-        {
-            return 0;
-        }
+        static_assert(i < ROWS * COLS, "Matrix: Index out of bounds!");
 
         return _data[i];
     }
