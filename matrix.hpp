@@ -51,7 +51,7 @@ public:
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
 
-        Matrix<ROWS, COLS> result = this;
+        Matrix<ROWS, COLS> result = *this;
 
         result += rhs;
 
@@ -73,9 +73,7 @@ public:
 
     float operator[](uint16_t i) const
     {
-        static_assert(i < ROWS * COLS, "Matrix: Index out of bounds!");
-
-        return _data[i];
+        return _data.at(i);
     }
 
     friend std::ostream &operator<<(std::ostream &out, const Matrix &m)
