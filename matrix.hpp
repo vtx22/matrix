@@ -22,6 +22,18 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
+    Matrix operator+(const Matrix<R, C> &rhs)
+    {
+        static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
+
+        Matrix<ROWS, COLS> result = rhs;
+
+        result += *this;
+
+        return result;
+    }
+
+    template <uint8_t R, uint8_t C>
     Matrix &operator+=(const Matrix<R, C> &rhs)
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
