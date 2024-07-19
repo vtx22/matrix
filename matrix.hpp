@@ -105,6 +105,22 @@ public:
         return result;
     }
 
+    Matrix operator*(float scalar)
+    {
+        Matrix result = *this;
+        return result *= scalar;
+    }
+
+    Matrix &operator*=(float scalar)
+    {
+        for (uint16_t i = 0; i < ROWS * COLS; i++)
+        {
+            _data[i] *= scalar;
+        }
+
+        return *this;
+    }
+
     template <uint8_t R, uint8_t C>
     Matrix operator-(const Matrix<R, C> &rhs)
     {
