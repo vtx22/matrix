@@ -169,7 +169,7 @@ public:
             out << "( ";
             for (uint8_t j = 0; j < m.cols(); j++)
             {
-                out << m[i * m.rows() + j] << " ";
+                out << m[i * m.cols() + j] << " ";
             }
             out << ")\n";
         }
