@@ -11,6 +11,10 @@ class Matrix
 {
 public:
     Matrix(const std::array<float, ROWS * COLS> &data) : _data(data) {}
+    Matrix()
+    {
+        _data.fill(0.0f);
+    }
 
     uint8_t rows() const
     {
