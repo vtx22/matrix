@@ -153,6 +153,30 @@ public:
         return ca;
     }
 
+    /*
+    Set the elements of one row
+    @param row Row number (starting at 0)
+    @param elements Row element array
+    */
+    void set_row(uint8_t row, std::array<float, COLS> elements)
+    {
+        uint16_t start = row * COLS;
+        std::copy(elements.begin(), elements.end(), _data.begin() + start);
+    }
+
+    /*
+    Set the elements of one column
+    @param col Column number (starting at 0)
+    @param elements Column element array
+    */
+    void set_col(uint8_t col, std::array<float, ROWS> elements)
+    {
+        for (uint8_t r = 0; r < ROWS; r++)
+        {
+            _data[r * COLS + col] = elements[r];
+        }
+    }
+
     template <uint8_t R, uint8_t C>
     Matrix<ROWS, C> operator*(const Matrix<R, C> &rhs) const
     {
