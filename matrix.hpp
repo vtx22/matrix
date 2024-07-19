@@ -25,6 +25,11 @@ public:
         return COLS;
     }
 
+    void set(uint16_t index, float value)
+    {
+        _data[index] = value;
+    }
+
     template <uint8_t R, uint8_t C>
     Matrix operator-(const Matrix<R, C> &rhs)
     {
