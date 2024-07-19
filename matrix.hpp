@@ -14,36 +14,68 @@ public:
     {
         static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
     }
+
     Matrix()
     {
         static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
         _data.fill(0.0f);
     }
 
+    /*
+    Get the number of rows of the matrix
+    @return The number of rows of the matrix
+    */
     uint8_t rows() const
     {
         return ROWS;
     }
+
+    /*
+    Get the number of columns of the matrix
+    @return The number of columns of the matrix
+    */
     uint8_t cols() const
     {
         return COLS;
     }
 
+    /*
+    Set one element of the matrix
+    @param index Index of the element
+    @param value Value to set the element to
+    */
     void set(uint16_t index, float value)
     {
         _data.at(index) = value;
     }
 
+    /*
+    Set one element of the matrix
+    @param row Row of the element (starting at 0)
+    @param col Column of the element (starting at 0)
+    @param value Value to set the element to
+    */
     void set(uint8_t row, uint8_t col, float value)
     {
         _data.at(row * COLS + col) = value;
     }
 
+    /*
+    Get the value of one element
+    @param index Index of the element
+    @return The value of the element
+    */
     float get(uint16_t index) const
     {
         return _data.at(index);
     }
 
+    /*
+    Get the value of one element
+    @param row Row of the element (starting at 0)
+    @param col Column of the element (starting at 0)
+    @return The value of the element
+    */
     float get(uint8_t row, uint8_t col) const
     {
         return _data.at(row * COLS + col);
