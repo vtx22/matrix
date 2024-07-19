@@ -82,7 +82,7 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
-    Matrix operator*(const Matrix<R, C> &rhs)
+    Matrix<ROWS, C> operator*(const Matrix<R, C> &rhs)
     {
         static_assert(COLS == R, "Matrix dimension mismatch at Matrix multiplication!");
 
