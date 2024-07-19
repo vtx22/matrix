@@ -10,9 +10,13 @@ template <uint8_t ROWS, uint8_t COLS>
 class Matrix
 {
 public:
-    Matrix(const std::array<float, ROWS * COLS> &data) : _data(data) {}
+    Matrix(const std::array<float, ROWS * COLS> &data) : _data(data)
+    {
+        static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
+    }
     Matrix()
     {
+        static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
         _data.fill(0.0f);
     }
 
