@@ -31,6 +31,31 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
+    Matrix operator*(const Matrix<R, C> &rhs)
+    {
+        static_assert(COLS == R, "Matrix dimension mismatch at Matrix multiplication!");
+
+        Matrix<ROWS, C> result;
+
+        for (uint16_t res_i = 0; res_i < ROWS * C; res_i++)
+        {
+            float res_i_element = 0.0f;
+            int row = res_i / C;
+            int col = res_i % C;
+
+            for (uint8_t rc_i = 0; rc_i < COLS; rc_i++)
+            {
+                res_i_element += _data[row * COLS + rc_i] * rhs[rc_i * C + col];
+            }
+
+            result.set(res_i, res_i_element);
+        }
+
+        *this = result;
+        return *this;
+    }
+
+    template <uint8_t R, uint8_t C>
     Matrix operator-(const Matrix<R, C> &rhs)
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
