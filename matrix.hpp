@@ -64,6 +64,31 @@ public:
     }
 
     /*
+    Get the transposed matrix A^T
+    @return Transposed matrix
+    */
+    Matrix<COLS, ROWS> transposed()
+    {
+        Matrix<COLS, ROWS> transposed;
+
+        if (ROWS <= COLS)
+        {
+            for (uint8_t r = 0; r < ROWS; r++)
+            {
+                transposed.set_col(r, this->get_row(r));
+            }
+        }
+        else
+        {
+            for (uint8_t c = 0; c < COLS; c++)
+            {
+                transposed.set_row(c, this->get_col(c));
+            }
+        }
+        return transposed;
+    }
+
+    /*
     Get the number of rows of the matrix
     @return The number of rows of the matrix
     */
