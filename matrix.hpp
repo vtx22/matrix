@@ -123,7 +123,7 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
-    Matrix<ROWS, C> operator*(const Matrix<R, C> &rhs)
+    Matrix<ROWS, C> operator*(const Matrix<R, C> &rhs) const
     {
         static_assert(COLS == R, "Matrix dimension mismatch at Matrix multiplication!");
 
@@ -146,7 +146,7 @@ public:
         return result;
     }
 
-    Matrix operator*(float scalar)
+    Matrix operator*(float scalar) const
     {
         Matrix result = *this;
         return result *= scalar;
@@ -163,7 +163,7 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
-    Matrix operator-(const Matrix<R, C> &rhs)
+    Matrix operator-(const Matrix<R, C> &rhs) const
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
 
@@ -188,7 +188,7 @@ public:
     }
 
     template <uint8_t R, uint8_t C>
-    Matrix operator+(const Matrix<R, C> &rhs)
+    Matrix operator+(const Matrix<R, C> &rhs) const
     {
         static_assert(ROWS == R && COLS == C, "Matrix dimension mismatch at Matrix addition!");
 
