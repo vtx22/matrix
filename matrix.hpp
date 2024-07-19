@@ -31,7 +31,22 @@ public:
 
     void set(uint16_t index, float value)
     {
-        _data[index] = value;
+        _data.at(index) = value;
+    }
+
+    void set(uint8_t row, uint8_t col, float value)
+    {
+        _data.at(row * COLS + col) = value;
+    }
+
+    float get(uint16_t index) const
+    {
+        return _data.at(index);
+    }
+
+    float get(uint8_t row, uint8_t col) const
+    {
+        return _data.at(row * COLS + col);
     }
 
     template <uint8_t R, uint8_t C>
@@ -55,8 +70,7 @@ public:
             result.set(res_i, res_i_element);
         }
 
-        *this = result;
-        return *this;
+        return result;
     }
 
     template <uint8_t R, uint8_t C>
