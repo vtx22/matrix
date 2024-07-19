@@ -5,6 +5,7 @@
 #include <array>
 #include <iostream>
 #include <iomanip>
+#include <algorithm>
 
 enum MATRIX_TYPE
 {
@@ -120,6 +121,36 @@ public:
     float get(uint8_t row, uint8_t col) const
     {
         return _data.at(row * COLS + col);
+    }
+
+    /*
+    Get one row of the matrix as an array
+    @param row Row number (starting at 0)
+    @return Values of the row as std::array
+    */
+    std::array<float, COLS> get_row(uint8_t row) const
+    {
+        std::array<float, COLS> ra;
+        uint16_t start = row * COLS;
+        std::copy(_data.begin() + start, _data.begin() + start + COLS, ra.begin());
+        return ra;
+    }
+
+    /*
+    Get one column of the matrix as an array
+    @param col Column number (starting at 0)
+    @return Values of the column as std::array
+    */
+    std::array<float, ROWS> get_col(uint8_t col) const
+    {
+        std::array<float, ROWS> ca;
+
+        for (uint8_t r = 0; r < ROWS; r++)
+        {
+            ca[r] = _data[r * COLS + col];
+        }
+
+        return ca;
     }
 
     template <uint8_t R, uint8_t C>
