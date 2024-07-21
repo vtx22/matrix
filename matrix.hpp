@@ -1,11 +1,16 @@
 #ifndef _V_MATRIX_HPP
 #define _V_MATRIX_HPP
 
+#define _V_MATRIX_PRINT true
+
 #include <cstdint>
 #include <array>
+#include <algorithm>
+
+#if _V_MATRIX_PRINT
 #include <iostream>
 #include <iomanip>
-#include <algorithm>
+#endif
 
 enum MATRIX_TYPE
 {
@@ -412,6 +417,7 @@ public:
         return _data.at(i);
     }
 
+#if _V_MATRIX_PRINT
     friend std::ostream &operator<<(std::ostream &out, const Matrix &m)
     {
         std::ios old_state(nullptr);
@@ -441,6 +447,8 @@ public:
     {
         std::cout << *this;
     }
+
+#endif
 
 private:
     std::array<float, ROWS * COLS> _data;
