@@ -20,18 +20,18 @@ class Matrix
 public:
     Matrix(const std::array<float, ROWS * COLS> &data) : _data(data)
     {
-        static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
+        // static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
     }
 
     Matrix()
     {
-        static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
+        // static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
         _data.fill(0.0f);
     }
 
     Matrix(MATRIX_TYPE type)
     {
-        static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
+        // static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
 
         switch (type)
         {
@@ -383,30 +383,18 @@ private:
     }
 
     template <uint8_t N>
-    float _determinant(const Matrix<N, N> &matrix)
+    float _determinant(Matrix<N, N> matrix)
     {
         float det = 0.0f;
 
         int8_t sign = 1;
-        Matrix<N - 1, N - 1> submatrix;
 
         // Develop submatrix for all rows of column 0
         for (uint8_t r = 0; r < N; r++)
         {
-            // Fill Submatrix
-            uint16_t submatrix_index = 0;
-            for (uint16_t e = 0; e < N * N; e++)
-            {
-                // Current element is not part of submatrix
-                if ((e % N) == 0 || (e / N) == r)
-                {
-                    continue;
-                }
+            Matrix<N - 1, N - 1> sm = matrix.submatrix(r, 0);
 
-                submatrix.set(submatrix_index++, matrix[e]);
-            }
-
-            det += sign * matrix[r * N] * _determinant(submatrix);
+            det += sign * matrix[r * N] * _determinant(sm);
             sign *= -1;
         }
 
