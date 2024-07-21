@@ -39,7 +39,7 @@ const Matrix<4, 4> MatrixI4(IDENTITY);
 ```C++
 m.get(1, 2);   // Get the matrix element at row 1 column 2 (count starts at 0)
 m.get(8);      // Get the matrix element at absolute index 8 (count starts at 0 and goes rowwise)
-m[8];          // Get the matrix element at absolute index 8 (count starts at 0 and goes rowwise)    
+m[8];          // Get the matrix element at absolute index 8 (returns value and not a reference, thus setting value is not allowed)    
 
 ```
 ```C++
