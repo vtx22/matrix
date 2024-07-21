@@ -89,6 +89,17 @@ public:
     }
 
     /*
+    Calculate norm^2 of vector
+    @return Norm^2
+    */
+    float norm2()
+    {
+        float n = norm();
+
+        return n * n;
+    }
+
+    /*
     Get a normalized copy of the vector
     @return Normalized Vector
     */
