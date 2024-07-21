@@ -107,18 +107,13 @@ public:
     {
         float n = norm();
 
-        Matrix mn;
+        Matrix mn = *this;
         if (abs(n) < 1e-9)
         {
             return mn;
         }
 
-        for (uint8_t i = 0; i < ROWS * COLS; i++)
-        {
-            mn.set(i, _data[i] / n);
-        }
-
-        return mn;
+        return mn / n;
     }
 
     /*
