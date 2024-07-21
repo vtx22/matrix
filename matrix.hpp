@@ -118,6 +118,23 @@ public:
     }
 
     /*
+    Get the inverse matrix A^(-1)
+    @return Inverse matrix
+    */
+    Matrix inverse()
+    {
+        float d = det();
+
+        // Inverse does not exist
+        if (abs(d) < 1e-9)
+        {
+            return *this;
+        }
+
+        return adjugate() * (1.0f / d);
+    }
+
+    /*
     Get the adjugate matrix adj(A)
     @return Adjugate matrix
     */
