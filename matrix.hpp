@@ -64,6 +64,24 @@ public:
     }
 
     /*
+    Calculate the trace of the matrix
+    @return Trace value of matrix
+    */
+    float trace()
+    {
+        static_assert(COLS == ROWS, "Matrix must be square to calculate trace!");
+
+        float trace = 0.0f;
+
+        for (uint8_t i = 0; i < ROWS; i++)
+        {
+            trace += _data[i * COLS + i];
+        }
+
+        return trace;
+    }
+
+    /*
     Calculate the matrix determinant
     @return Value of the determinant
     */
