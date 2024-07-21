@@ -434,6 +434,9 @@ public:
         return out;
     }
 
+    /*
+    Print matrix to std::cout
+    */
     void print()
     {
         std::cout << *this;
