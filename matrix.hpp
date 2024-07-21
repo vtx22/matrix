@@ -589,4 +589,16 @@ const Matrix<2, 2> MatrixI2(IDENTITY);
 const Matrix<3, 3> MatrixI3(IDENTITY);
 const Matrix<4, 4> MatrixI4(IDENTITY);
 
+typedef Matrix<2, 1> VectorCol2;
+typedef Matrix<3, 1> VectorCol3;
+typedef Matrix<4, 1> VectorCol4;
+
+typedef Matrix<1, 2> VectorRow2;
+typedef Matrix<1, 3> VectorRow3;
+typedef Matrix<1, 4> VectorRow4;
+
+typedef VectorCol2 Vector2;
+typedef VectorCol4 Vector3;
+typedef VectorCol4 Vector4;
+
 #endif // _V_MATRIX_HPP
