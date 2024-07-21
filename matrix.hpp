@@ -72,7 +72,7 @@ public:
     Calculate the trace of the matrix
     @return Trace value of matrix
     */
-    float trace()
+    float trace() const
     {
         static_assert(COLS == ROWS, "Matrix must be square to calculate trace!");
 
