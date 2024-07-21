@@ -24,6 +24,17 @@ Matrix<3, 3> m(ZEROES);   // 3x3 matrix explicetely filled with zeroes
 Matrix<3, 3> m(ONES);     // 3x3 matrix explicetely filled with ones
 Matrix<3, 3> m(IDENTITY); // 3x3 identity matrix (ones along diagonal)
 ```
+Special predefined matricies:
+```C++
+typedef Matrix<2, 2> Matrix2;
+typedef Matrix<3, 3> Matrix3;
+typedef Matrix<4, 4> Matrix4;
+
+const Matrix<2, 2> MatrixI2(IDENTITY);
+const Matrix<3, 3> MatrixI3(IDENTITY);
+const Matrix<4, 4> MatrixI4(IDENTITY);
+```
+
 ## Set/Get elements
 ```C++
 m.get(1, 2);   // Get the matrix element at row 1 column 2 (count starts at 0)
