@@ -462,21 +462,20 @@ public:
 private:
     std::array<float, ROWS * COLS> _data;
 
-    float _determinant(const Matrix<1, 1> &matrix)
-    {
-        return matrix[0];
-    }
-
-    float _determinant(const Matrix<2, 2> &matrix)
-    {
-        return matrix[0] * matrix[3] - matrix[1] * matrix[2];
-    }
-
     template <uint8_t N>
-    float _determinant(Matrix<N, N> matrix)
+    float _determinant(Matrix<N, N> &matrix)
     {
-        float det = 0.0f;
+        if (N == 1)
+        {
+            return matrix[0];
+        }
 
+        if (N == 2)
+        {
+            return matrix[0] * matrix[3] - matrix[1] * matrix[2];
+        }
+
+        float det = 0.0f;
         int8_t sign = 1;
 
         // Develop submatrix for all rows of column 0
