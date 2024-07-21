@@ -126,6 +126,33 @@ public:
         return *this;
     }
 
+    /*
+    Calculate dot product v1 * v2
+    @return Dot product
+    */
+    template <uint8_t N>
+    static float dot_product(const Matrix<N, 1> v1, const Matrix<N, 1> v2)
+    {
+        float dp = 0.f;
+
+        for (uint8_t i = 0; i < N; i++)
+        {
+            dp += v1[i] * v2[i];
+        }
+
+        return dp;
+    }
+
+    /*
+    Calculate dot product with v
+    @return Dot product of this vector and v
+    */
+    template <uint8_t N>
+    float dot_product(const Matrix<N, 1> v)
+    {
+        return dot_product(*this, v);
+    }
+
     // ==== ========================= ==== //
 
     /*
