@@ -91,6 +91,12 @@ m.trace(); // Get trace of the matrix
 ```C++
 m.det(); // Get determinant of the matrix 
 ```
+## Matrix comparisons
+```C++
+m1 == m2   // Returns true if the matricies have same dimensions and all values are the same (difference < 1e-9)
+m1 != m2   // Opposite of ==
+```
+
 ## Printing
 Matrix can be printed to console. `_V_MATRIX_PRINT` has to be set to `true` in `matrix.hpp`
 ```C++
