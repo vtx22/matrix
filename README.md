@@ -13,6 +13,15 @@ Minimal C++ Matrix library with fully static matrix dimensions known at compile 
  - Inverse Matrix
  - Matrix printing to console
 
+__Vector Functions:__
+ - Vector initialization
+ - Vector norm
+ - Normalized Vector
+ - Dot Product
+ - Cross Product
+ - Angle between vectors
+ - Rotation Axis
+
 # Usage
 ## Create Matrix
 ```C++
@@ -33,6 +42,20 @@ typedef Matrix<4, 4> Matrix4;
 const Matrix<2, 2> MatrixI2(IDENTITY);
 const Matrix<3, 3> MatrixI3(IDENTITY);
 const Matrix<4, 4> MatrixI4(IDENTITY);
+```
+Special predefined vectors:
+```C++
+typedef Matrix<2, 1> VectorCol2;
+typedef Matrix<3, 1> VectorCol3;
+typedef Matrix<4, 1> VectorCol4;
+
+typedef Matrix<1, 2> VectorRow2;
+typedef Matrix<1, 3> VectorRow3;
+typedef Matrix<1, 4> VectorRow4;
+
+typedef VectorCol2 Vector2;
+typedef VectorCol4 Vector3;
+typedef VectorCol4 Vector4;
 ```
 
 ## Set/Get elements
@@ -95,6 +118,21 @@ m.det(); // Get determinant of the matrix
 ```C++
 m1 == m2   // Returns true if the matricies have same dimensions and all values are the same (difference < 1e-9)
 m1 != m2   // Opposite of ==
+```
+## Vector Operations
+```C++
+v.norm();                       // Get vector norm
+v.norm2();                      // Get vector norm squared
+v.normalized();                 // Get normalized copy of vector
+v.normalize();                  // Normalize vector
+
+v.dot_product(v2);              // Calculate dot product v * v2
+v.cross_product(v2);            // Calculate cross product v x v2 (3x1 vectors only)
+v.cross_product_normalized(v2); // Get cross product as normalized vector (3x1 vectors only)
+
+v.angle_between_vectors(v2);    // Get angle between v and v2 in rad (2x1 or 3x1 vectors only)
+v.rotation_axis(v2);            // Get normalized rotation axis to rotate v to v2 (3x1 vectors only)
+
 ```
 
 ## Printing
