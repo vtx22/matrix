@@ -426,6 +426,25 @@ public:
         return _data.at(i);
     }
 
+    template <uint8_t R, uint8_t C>
+    bool operator==(const Matrix<R, C> &rhs) const
+    {
+        if (ROWS != R || COLS != C)
+        {
+            return false;
+        }
+
+        for (uint16_t i = 0; i < ROWS * COLS; i++)
+        {
+            if (abs(_data[i] - rhs[i]) > 1e-9)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 #if _V_MATRIX_PRINT
     friend std::ostream &operator<<(std::ostream &out, const Matrix &m)
     {
