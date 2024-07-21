@@ -1,7 +1,7 @@
 #ifndef _V_MATRIX_HPP
 #define _V_MATRIX_HPP
 
-#define _V_MATRIX_PRINT true
+#define _V_MATRIX_PRINT false
 
 #include <cstdint>
 #include <array>
