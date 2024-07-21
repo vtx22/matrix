@@ -496,10 +496,6 @@ typedef Matrix<2, 2> Matrix2;
 typedef Matrix<3, 3> Matrix3;
 typedef Matrix<4, 4> Matrix4;
 
-typedef Matrix<2, 1> Vector2;
-typedef Matrix<3, 1> Vector3;
-typedef Matrix<4, 1> Vector4;
-
 const Matrix<2, 2> MatrixI2(IDENTITY);
 const Matrix<3, 3> MatrixI3(IDENTITY);
 const Matrix<4, 4> MatrixI4(IDENTITY);
