@@ -131,7 +131,7 @@ public:
             return *this;
         }
 
-        return adjugate() * (1.0f / d);
+        return adjugate() / d;
     }
 
     /*
@@ -336,6 +336,22 @@ public:
         for (uint16_t i = 0; i < ROWS * COLS; i++)
         {
             _data[i] *= scalar;
+        }
+
+        return *this;
+    }
+
+    Matrix operator/(float scalar) const
+    {
+        Matrix result = *this;
+        return result /= scalar;
+    }
+
+    Matrix &operator/=(float scalar)
+    {
+        for (uint16_t i = 0; i < ROWS * COLS; i++)
+        {
+            _data[i] /= scalar;
         }
 
         return *this;
