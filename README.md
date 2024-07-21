@@ -74,7 +74,7 @@ Matrix<2, 2> pro = m1 * m2;      // Matrix multiplication
 Matrix<2, 2> sca = m1 * 2.0f;    // (Elemetwise) multiplication by scalar
 Matrix<2, 2> sca = m1 / 2.0f;    // (Elemetwise) division by scalar
 ```
-## Matrix Tranformations
+## Matrix Transformations
 ```C++
 m.transposed(); // Get transposed matrix
 ```
