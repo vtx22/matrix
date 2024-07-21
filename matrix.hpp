@@ -118,6 +118,34 @@ public:
     }
 
     /*
+    Get the adjugate matrix adj(A)
+    @return Adjugate matrix
+    */
+    Matrix adjugate()
+    {
+        static_assert(COLS == ROWS, "Matrix must be square to calculate adjugate!");
+
+        Matrix adj_t;
+
+        for (uint16_t e = 0; e < ROWS * COLS; e++)
+        {
+            uint8_t row = e / COLS;
+            uint8_t col = e % COLS;
+
+            float d = submatrix(row, col).det();
+
+            if ((row + col) % 2 != 0)
+            {
+                d *= -1.0f;
+            }
+
+            adj_t.set(e, d);
+        }
+
+        return adj_t.transposed();
+    }
+
+    /*
     Get the submatrix that does not contain the given row and column
     @param row Row to delete
     @param col Column to delete
