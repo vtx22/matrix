@@ -101,7 +101,7 @@ public:
     Get the transposed matrix A^T
     @return Transposed matrix
     */
-    Matrix<COLS, ROWS> transposed()
+    Matrix<COLS, ROWS> transposed() const
     {
         Matrix<COLS, ROWS> transposed;
 
