@@ -445,6 +445,12 @@ public:
         return true;
     }
 
+    template <uint8_t R, uint8_t C>
+    bool operator!=(const Matrix<R, C> &rhs) const
+    {
+        return !(*this == rhs);
+    }
+
 #if _V_MATRIX_PRINT
     friend std::ostream &operator<<(std::ostream &out, const Matrix &m)
     {
