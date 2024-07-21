@@ -153,6 +153,36 @@ public:
         return dot_product(*this, v);
     }
 
+    /*
+    Calculate angle between vectors v1 and v2
+    @param v1 First vector
+    @param v2 Second vector
+    @return Angle [rad]
+    */
+    template <uint8_t N>
+    static float angle_between_vectors(Matrix<N, 1> &v1, Matrix<N, 1> &v2)
+    {
+        float np = v1.norm() * v2.norm();
+
+        if (np < 1e-9)
+        {
+            return 0.f;
+        }
+
+        return acos(dot_product(v1, v2) / np);
+    }
+
+    /*
+    Calculate angle between this vector and v
+    @param v Second vector
+    @return Angle [rad]
+    */
+    template <uint8_t N>
+    float angle_between_vectors(Matrix<N, 1> &v)
+    {
+        return angle_between_vectors(*this, v);
+    }
+
     // ==== ========================= ==== //
 
     /*
