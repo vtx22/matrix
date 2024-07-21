@@ -133,7 +133,7 @@ public:
         // Inverse does not exist
         if (abs(d) < 1e-9)
         {
-            return *this;
+            return Matrix();
         }
 
         return adjugate() / d;
