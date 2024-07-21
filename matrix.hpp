@@ -232,6 +232,15 @@ public:
     }
 
     /*
+    Set all matrix elements from array
+    @param elements Element array
+    */
+    void set(const std::array<float, ROWS * COLS> &elements)
+    {
+        std::copy(elements.begin(), elements.end(), _data.begin());
+    }
+
+    /*
     Get the value of one element
     @param index Index of the element
     @return The value of the element
