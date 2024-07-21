@@ -423,17 +423,17 @@ public:
         std::ios old_state(nullptr);
         old_state.copyfmt(out);
 
-        out << std::setw(10) << std::fixed << std::showpos << std::setprecision(3);
+        out << std::scientific << std::showpos << std::setprecision(2);
 
         out << "\n";
         for (uint8_t i = 0; i < m.rows(); i++)
         {
-            out << "( ";
+            out << "(";
             for (uint8_t j = 0; j < m.cols(); j++)
             {
-                out << m[i * m.cols() + j] << " ";
+                out << "   " << m[i * m.cols() + j];
             }
-            out << ")\n";
+            out << "   )\n";
         }
 
         out.copyfmt(old_state);
