@@ -64,6 +64,17 @@ public:
     }
 
     /*
+    Calculate the matrix determinant
+    @return Value of the determinant
+    */
+    float det()
+    {
+        static_assert(ROWS == COLS, "Matrix must be square to calculate determinant!");
+
+        return _determinant(*this);
+    }
+
+    /*
     Get the transposed matrix A^T
     @return Transposed matrix
     */
@@ -317,6 +328,47 @@ public:
 
 private:
     std::array<float, ROWS * COLS> _data;
+
+    float _determinant(const Matrix<1, 1> &matrix)
+    {
+        return matrix[0];
+    }
+
+    float _determinant(const Matrix<2, 2> &matrix)
+    {
+        return matrix[0] * matrix[3] - matrix[1] * matrix[2];
+    }
+
+    template <uint8_t N>
+    float _determinant(const Matrix<N, N> &matrix)
+    {
+        float det = 0.0f;
+
+        int8_t sign = 1;
+        Matrix<N - 1, N - 1> submatrix;
+
+        // Develop submatrix for all rows of column 0
+        for (uint8_t r = 0; r < N; r++)
+        {
+            // Fill Submatrix
+            uint16_t submatrix_index = 0;
+            for (uint16_t e = 0; e < N * N; e++)
+            {
+                // Current element is not part of submatrix
+                if ((e % N) == 0 || (e / N) == r)
+                {
+                    continue;
+                }
+
+                submatrix.set(submatrix_index++, matrix[e]);
+            }
+
+            det += sign * matrix[r * N] * _determinant(submatrix);
+            sign *= -1;
+        }
+
+        return det;
+    }
 };
 
 typedef Matrix<2, 2> Matrix2;
