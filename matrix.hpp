@@ -162,6 +162,8 @@ public:
     template <uint8_t N>
     static float angle_between_vectors(Matrix<N, 1> &v1, Matrix<N, 1> &v2)
     {
+        static_assert(N > 1 && N < 4, "Cannot calculate angle between vectors of given dimension!");
+
         float np = v1.norm() * v2.norm();
 
         if (np < 1e-9)
