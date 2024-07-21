@@ -414,7 +414,11 @@ public:
 
     friend std::ostream &operator<<(std::ostream &out, const Matrix &m)
     {
-        std::streamsize ss = std::cout.precision();
+        std::ios old_state(nullptr);
+        old_state.copyfmt(out);
+
+        out << std::setw(10) << std::fixed << std::showpos << std::setprecision(3);
+
         out << "\n";
         for (uint8_t i = 0; i < m.rows(); i++)
         {
@@ -426,7 +430,7 @@ public:
             out << ")\n";
         }
 
-        out << std::setprecision(ss);
+        out.copyfmt(old_state);
         return out;
     }
 
