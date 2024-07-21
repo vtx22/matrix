@@ -434,6 +434,11 @@ public:
         return out;
     }
 
+    void print()
+    {
+        std::cout << *this;
+    }
+
 private:
     std::array<float, ROWS * COLS> _data;
 
