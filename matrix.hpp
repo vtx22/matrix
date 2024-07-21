@@ -6,6 +6,7 @@
 #include <cstdint>
 #include <array>
 #include <algorithm>
+#include <cmath>
 
 #if _V_MATRIX_PRINT
 #include <iostream>
@@ -67,6 +68,59 @@ public:
             break;
         }
     }
+
+    // ==== VECTOR SPECIFIC FUNCTIONS ==== //
+
+    /*
+    Calculate norm of vector
+    @return Norm
+    */
+    float norm()
+    {
+        static_assert(ROWS == 1 || COLS == 1, "Norm can only be calculated for vectors!");
+
+        float sum = 0.0f;
+        for (uint8_t i = 0; i < ROWS * COLS; i++)
+        {
+            sum += _data[i] * _data[i];
+        }
+
+        return sqrt(sum);
+    }
+
+    /*
+    Get a normalized copy of the vector
+    @return Normalized Vector
+    */
+    Matrix normalized()
+    {
+        float n = norm();
+
+        Matrix mn;
+        if (abs(n) < 1e-9)
+        {
+            return mn;
+        }
+
+        for (uint8_t i = 0; i < ROWS * COLS; i++)
+        {
+            mn.set(i, _data[i] / n);
+        }
+
+        return mn;
+    }
+
+    /*
+    Normalize vector
+    @return Normalized Vector
+    */
+    Matrix &normalize()
+    {
+        *this = normalized();
+        return *this;
+    }
+
+    // ==== ========================= ==== //
 
     /*
     Calculate the trace of the matrix
