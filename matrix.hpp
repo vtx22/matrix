@@ -131,7 +131,7 @@ public:
     @return Dot product
     */
     template <uint8_t N>
-    static float dot_product(const Matrix<N, 1> v1, const Matrix<N, 1> v2)
+    static float dot_product(const Matrix<N, 1> &v1, const Matrix<N, 1> &v2)
     {
         float dp = 0.f;
 
@@ -148,7 +148,7 @@ public:
     @return Dot product of this vector and v
     */
     template <uint8_t N>
-    float dot_product(const Matrix<N, 1> v)
+    float dot_product(const Matrix<N, 1> &v) const
     {
         return dot_product(*this, v);
     }
