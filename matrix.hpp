@@ -118,6 +118,31 @@ public:
     }
 
     /*
+    Get the submatrix that does not contain the given row and column
+    @param row Row to delete
+    @param col Column to delete
+    @return Reduced matrix
+    */
+    Matrix<ROWS - 1, COLS - 1> submatrix(uint8_t row, uint8_t col)
+    {
+        Matrix<ROWS - 1, COLS - 1> submatrix;
+
+        uint16_t submatrix_index = 0;
+        for (uint16_t e = 0; e < ROWS * COLS; e++)
+        {
+            // Current element is not part of submatrix
+            if ((e % COLS) == col || (e / COLS) == row)
+            {
+                continue;
+            }
+
+            submatrix.set(submatrix_index++, _data[e]);
+        }
+
+        return submatrix;
+    }
+
+    /*
     Get the number of rows of the matrix
     @return The number of rows of the matrix
     */
