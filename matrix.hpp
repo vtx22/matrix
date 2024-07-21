@@ -154,6 +154,42 @@ public:
     }
 
     /*
+    Calculate cross product of v1 and v2
+    @param v1 First vector
+    @param v2 Second vector
+    @return Cross product vector
+    */
+    static Matrix<3, 1> cross_product(const Matrix<3, 1> &v1, const Matrix<3, 1> v2)
+    {
+        float x = v1[1] * v2[2] - v1[3] * v2[1];
+        float y = v1[2] * v2[0] - v1[0] * v2[2];
+        float z = v1[0] * v2[1] - v1[1] * v2[0];
+
+        return Matrix<3, 1>({x, y, z});
+    }
+
+    /*
+    Calculate the cross product of v1 and v2
+    @param v1 First vector
+    @param v2 Second vector
+    @return Normalized cross product vector
+    */
+    static Matrix<3, 1> cross_product_normalized(const Matrix<3, 1> &v1, const Matrix<3, 1> v2)
+    {
+        return cross_product(v1, v2).normalize();
+    }
+
+    /*
+    Get the axis of rotation to rotate to v
+    @param v Vector to rotate to
+    @return Normalized rotation axis
+    */
+    Matrix<3, 1> rotation_axis(const Matrix<3, 1> &v)
+    {
+        return cross_product_normalized(*this, v);
+    }
+
+    /*
     Calculate angle between vectors v1 and v2
     @param v1 First vector
     @param v2 Second vector
