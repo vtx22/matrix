@@ -38,30 +38,18 @@ public:
     Matrix(MATRIX_TYPE type)
     {
         // static_assert(ROWS > 0 && COLS > 0, "Matrix dimensions must be greater than 0!");
-
+        _data.fill(0.0f);
         switch (type)
         {
         case IDENTITY:
         {
-            static_assert(ROWS == COLS, "Matrix must be square to be initialized as Identity Matrix!");
-
-            _data.fill(0.0f);
-
-            uint8_t col = 0;
-            int16_t last_row = -1;
-            for (uint16_t i = 0; i < ROWS * COLS; i++)
+            for (uint8_t i = 0; i < ROWS; i++)
             {
-                if (i % COLS == col && i / COLS > last_row)
-                {
-                    _data[i] = 1.0f;
-                    col++;
-                    last_row = i / COLS;
-                }
+                _data[i * COLS + i] = 1.0f;
             }
         }
         break;
         case ZEROES:
-            _data.fill(0.0f);
             break;
         case ONES:
             _data.fill(1.0f);
