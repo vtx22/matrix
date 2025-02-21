@@ -29,8 +29,8 @@ Matrix<3, 3> m;                               // Create a 3x3 matrix filled with
 Matrix<3, 3> m({0, 1, 2, 3, 4, 5, 6, 7, 8});  // Create 3x3 matrix from array
 
 // Sepcial types
-Matrix<3, 3> m(ZEROS);    // 3x3 matrix explicetely filled with zeros
-Matrix<3, 3> m(ONES);     // 3x3 matrix explicetely filled with ones
+Matrix<3, 3> m(ZEROS);    // 3x3 matrix explicitly filled with zeros
+Matrix<3, 3> m(ONES);     // 3x3 matrix explicitly filled with ones
 Matrix<3, 3> m(IDENTITY); // 3x3 identity matrix (ones along diagonal)
 ```
 Special predefined matricies:
