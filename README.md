@@ -2,7 +2,7 @@
 Minimal C++ Matrix library with fully static matrix dimensions known at compile time
 # Features
  - Matrix initialization
- - Special Matricies (Identity, Ones, Zeros)
+ - Special matrices (Identity, Ones, Zeros)
  - Operators: Addition, Subtraction, Scalar Multiplication/Division, Matrix Multiplication
  - Element manipulation
  - Submatrix creation (row/column elimination)
@@ -33,7 +33,7 @@ Matrix<3, 3> m(ZEROS);    // 3x3 matrix explicitly filled with zeros
 Matrix<3, 3> m(ONES);     // 3x3 matrix explicitly filled with ones
 Matrix<3, 3> m(IDENTITY); // 3x3 identity matrix (ones along diagonal)
 ```
-Special predefined matricies:
+Special predefined matrices:
 ```C++
 typedef Matrix<2, 2> Matrix2;
 typedef Matrix<3, 3> Matrix3;
@@ -116,7 +116,7 @@ m.det(); // Get determinant of the matrix
 ```
 ## Matrix comparisons
 ```C++
-m1 == m2   // Returns true if the matricies have same dimensions and all values are the same (difference < 1e-9)
+m1 == m2   // Returns true if the matrices have same dimensions and all values are the same (difference < 1e-9)
 m1 != m2   // Opposite of ==
 ```
 ## Vector Operations
