@@ -16,7 +16,7 @@
 enum MATRIX_TYPE
 {
     IDENTITY,
-    ZEROES,
+    ZEROS,
     ONES,
 } typedef MATRIX_TYPE;
 
@@ -49,7 +49,7 @@ public:
             }
         }
         break;
-        case ZEROES:
+        case ZEROS:
             break;
         case ONES:
             _data.fill(1.0f);
